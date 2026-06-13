@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "c8tuqq7n2",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "rent",
+    "amount": 3500,
+    "description": "Monthly lease for luxury studio space",
+    "date": "2026-05-16"
+  },
+  {
+    "_id": "a5mmvy0qe",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "salary",
+    "amount": 1500,
+    "description": "Marcus commission & base",
+    "date": "2026-05-29"
+  },
+  {
+    "_id": "45lnu707v",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "salary",
+    "amount": 1200,
+    "description": "Alexander commission & base",
+    "date": "2026-05-29"
+  },
+  {
+    "_id": "7pveg8zur",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "salary",
+    "amount": 1400,
+    "description": "Sophia commission & base",
+    "date": "2026-05-29"
+  },
+  {
+    "_id": "f2dh1y4cz",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "inventory",
+    "amount": 450,
+    "description": "Oribe styling products & beard pomades restocking",
+    "date": "2026-05-24"
+  },
+  {
+    "_id": "yt1fjbpxr",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "utilities",
+    "amount": 320,
+    "description": "Electricity & Water",
+    "date": "2026-06-03"
+  },
+  {
+    "_id": "ueh4oh8lt",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "marketing",
+    "amount": 600,
+    "description": "Instagram target ad campaigns",
+    "date": "2026-06-08"
+  },
+  {
+    "_id": "ji0war69r",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "category": "inventory",
+    "amount": 150,
+    "description": "Disinfectant barbicides and neck strips",
+    "date": "2026-06-11"
+  }
+]

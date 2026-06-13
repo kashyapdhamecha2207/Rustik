@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F2E16;
+  --color-secondary: #C8A96B;
+  --color-accent: #000000;
+  --color-gold: #C8A96B;
+  --color-gold-hover: #B5955A;
+  --color-forest: #0F2E16;
+  --color-forest-dark: #0A1E0E;
+  --color-off-white: #F8F8F8;
+  --color-luxury-black: #080C09; /* Deep forest-tinted black */
+  --color-luxury-dark: #121813;  /* Premium dashboard card background */
+  --color-luxury-gray: #1E261F;  /* Borders and elements in dark theme */
+  
+  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-off-white text-stone-800 font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-wide;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-panel-dark {
+  background: rgba(18, 24, 19, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 169, 107, 0.15); /* Luxury gold tint borders */
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-stone-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold/40 rounded-full transition-all hover:bg-gold/60;
+}
+
+/* Gold Gradient utilities */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F3E7C4 0%, #C8A96B 50%, #A37F3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #F3E7C4 0%, #C8A96B 50%, #A37F3D 100%);
+}
+
+.gold-border {
+  border-image: linear-gradient(135deg, #F3E7C4 0%, #C8A96B 50%, #A37F3D 100%) 1;
+}
+
+/* Smooth active state transitions */
+.transition-luxury {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

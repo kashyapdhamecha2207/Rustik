@@ -1,0 +1,86 @@
+[
+  {
+    "_id": "f0xcqc3x0",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "key": "homepage",
+    "value": {
+      "heroTitle": "CRAFTING LEGACY THROUGH LUXURY GROOMING",
+      "heroSubtitle": "Rustik Academy provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.",
+      "introText": "Established in 2020, Rustik Academy is a master-tier grooming lounge catering to gentlemen of high standard. Our studio is built on the foundations of heritage barbering and luxury wellness.",
+      "studioHours": {
+        "weekdays": "09:00 AM - 08:00 PM",
+        "saturday": "09:00 AM - 06:00 PM",
+        "sunday": "10:00 AM - 04:00 PM"
+      },
+      "whatsappLink": "https://wa.me/15550192834",
+      "phone": "+1 (555) 019-2834",
+      "address": "42 Royal Oak Crescent, Sector 5, Metropolitan"
+    }
+  },
+  {
+    "_id": "ufkkve5r9",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "key": "gallery",
+    "value": [
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600",
+        "title": "Slick Back Pompadour Fade",
+        "barberName": "Marcus Gold"
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=600",
+        "title": "Modern Textured French Crop",
+        "barberName": "Alexander Cutz"
+      },
+      {
+        "type": "before-after",
+        "beforeUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
+        "afterUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
+        "title": "Total Grooming Transformation",
+        "barberName": "Marcus Gold"
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=600",
+        "title": "Precision Straight Razor Lineup",
+        "barberName": "Marcus Gold"
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=600",
+        "title": "Premium Bleach Crop and Style",
+        "barberName": "Sophia Blend"
+      }
+    ]
+  },
+  {
+    "_id": "8jmz70knv",
+    "createdAt": "2026-06-13T21:09:42.047Z",
+    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "key": "testimonials",
+    "value": [
+      {
+        "name": "Bruce Wayne",
+        "role": "Business Executive",
+        "rating": 5,
+        "comment": "The level of service here is unmatched. It is more than a haircut — it is a therapeutic ritual. The forest-obsidian atmosphere feels private and extremely exclusive."
+      },
+      {
+        "name": "Tony Stark",
+        "role": "Tech Investor",
+        "rating": 5,
+        "comment": "Alexander Cutz has absolute surgical precision. Straight-razor beard lineups are incredibly clean. My permanent go-to grooming lounge."
+      },
+      {
+        "name": "Clark Kent",
+        "role": "Journalist",
+        "rating": 5,
+        "comment": "Extremely professional, elegant space, and very talented staff. The booking engine is smooth and the reminder alerts are helpful."
+      }
+    ]
+  }
+]

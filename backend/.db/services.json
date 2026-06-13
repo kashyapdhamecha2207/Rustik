@@ -1,0 +1,68 @@
+[
+  {
+    "_id": "kl9kdp3ey",
+    "createdAt": "2026-06-13T21:09:42.030Z",
+    "updatedAt": "2026-06-13T21:09:42.030Z",
+    "name": "Royal Haircut & Styling",
+    "category": "haircut",
+    "price": 65,
+    "duration": 45,
+    "description": "Precision scissor/clipper cut with scalp massage, hot towel treatment, blow dry, and premium pomade styling.",
+    "image": "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=300"
+  },
+  {
+    "_id": "fagoz8ybb",
+    "createdAt": "2026-06-13T21:09:42.030Z",
+    "updatedAt": "2026-06-13T21:09:42.030Z",
+    "name": "Classic Fade",
+    "category": "haircut",
+    "price": 45,
+    "duration": 30,
+    "description": "High, mid, or low fade blended to perfection. Includes hot lather neck shave.",
+    "image": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=300"
+  },
+  {
+    "_id": "jo7tigk4w",
+    "createdAt": "2026-06-13T21:09:42.030Z",
+    "updatedAt": "2026-06-13T21:09:42.031Z",
+    "name": "Rustik Beard Sculpting & Razor Line",
+    "category": "beard",
+    "price": 40,
+    "duration": 30,
+    "description": "Detailed beard trimming, oil therapy, massage, and sharp straight-razor cheek & neck clean lines.",
+    "image": "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=300"
+  },
+  {
+    "_id": "uxkj6ni49",
+    "createdAt": "2026-06-13T21:09:42.031Z",
+    "updatedAt": "2026-06-13T21:09:42.031Z",
+    "name": "The Gentleman Combo",
+    "category": "grooming",
+    "price": 95,
+    "duration": 75,
+    "description": "Royal Haircut + Beard Sculpting combined. Save money and walk out looking like royalty.",
+    "image": "https://images.unsplash.com/photo-1593702295094-aec22597af65?auto=format&fit=crop&q=80&w=300"
+  },
+  {
+    "_id": "5mck9tpwa",
+    "createdAt": "2026-06-13T21:09:42.031Z",
+    "updatedAt": "2026-06-13T21:09:42.031Z",
+    "name": "Signature Hair Coloring & Highlights",
+    "category": "coloring",
+    "price": 120,
+    "duration": 90,
+    "description": "Premium dye work, highlights, or gray coverage customized to your skin tone and style.",
+    "image": "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=300"
+  },
+  {
+    "_id": "2p3fppd23",
+    "createdAt": "2026-06-13T21:09:42.031Z",
+    "updatedAt": "2026-06-13T21:09:42.031Z",
+    "name": "Charcoal Purifying Facial Treatment",
+    "category": "facial",
+    "price": 50,
+    "duration": 45,
+    "description": "Deep pore extraction, steam mask, cold stone massage, and luxury gold serum application.",
+    "image": "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=300"
+  }
+]

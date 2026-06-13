@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "y4yffffiv",
+    "createdAt": "2026-06-13T21:09:41.746Z",
+    "updatedAt": "2026-06-13T21:09:41.747Z",
+    "name": "Arthur Pendelton",
+    "email": "owner@rustik.com",
+    "password": "$2a$10$ayDCiAMuv6yG3gs/aY8gOezK7I8imMwhQfLtX.kPdWml1KocMUXXW",
+    "role": "owner",
+    "phone": "+1 (555) 019-2834",
+    "status": "active"
+  },
+  {
+    "_id": "vd486abs2",
+    "createdAt": "2026-06-13T21:09:41.803Z",
+    "updatedAt": "2026-06-13T21:09:41.803Z",
+    "name": "Clarissa Gold",
+    "email": "manager@rustik.com",
+    "password": "$2a$10$uv5USEAx.wF0fGGsY9U4jeA5ZhXBcPWpFyM70TUDvaMOSy8nPGgky",
+    "role": "manager",
+    "phone": "+1 (555) 019-9988",
+    "status": "active"
+  },
+  {
+    "_id": "3eraa42g5",
+    "createdAt": "2026-06-13T21:09:41.858Z",
+    "updatedAt": "2026-06-13T21:09:41.858Z",
+    "name": "James Mercer",
+    "email": "staff@rustik.com",
+    "password": "$2a$10$IYaoJuzX9amVyDSAnlmET.Io3w1gUW8.BVPJyo4yvylmNg2E6VV/m",
+    "role": "staff",
+    "phone": "+1 (555) 019-7722",
+    "status": "active"
+  },
+  {
+    "_id": "hffcvhrfp",
+    "createdAt": "2026-06-13T21:09:41.916Z",
+    "updatedAt": "2026-06-13T21:09:41.916Z",
+    "name": "Marcus Gold",
+    "email": "marcus@rustik.com",
+    "password": "$2a$10$7oxluXRgH5anjXFwPBpzseIFm4kENL02o.FAzZIANANpP41rIlkwe",
+    "role": "barber",
+    "specialties": [
+      "Classic Fade",
+      "Razor Shave",
+      "Beard Sculpting"
+    ],
+    "experience": 8,
+    "rating": 4.9,
+    "bio": "Marcus has 8+ years styling elite clientele. Specializes in scissor precision and structural beard shaping.",
+    "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=300",
+    "instagram": "@marcus_rustik_cuts",
+    "phone": "+1 (555) 019-3344",
+    "status": "active"
+  },
+  {
+    "_id": "xftj63jmo",
+    "createdAt": "2026-06-13T21:09:41.974Z",
+    "updatedAt": "2026-06-13T21:09:41.974Z",
+    "name": "Alexander Cutz",
+    "email": "alex@rustik.com",
+    "password": "$2a$10$wGQ5H6x9UFKraRYvct008.Mpdl9rzjZRFXpAp8OqXyZd3jkrixIrS",
+    "role": "barber",
+    "specialties": [
+      "Modern Crop",
+      "Textured Quiff",
+      "Hair Tattooing"
+    ],
+    "experience": 5,
+    "rating": 4.8,
+    "bio": "Known for high-fashion runway looks and intricate graphic hair carvings. Alexander keeps your look ultra-modern.",
+    "avatar": "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?auto=format&fit=crop&q=80&w=300",
+    "instagram": "@alex_cuts_gold",
+    "phone": "+1 (555) 019-4455",
+    "status": "active"
+  },
+  {
+    "_id": "8q1gz2413",
+    "createdAt": "2026-06-13T21:09:42.029Z",
+    "updatedAt": "2026-06-13T21:09:42.029Z",
+    "name": "Sophia Blend",
+    "email": "sophia@rustik.com",
+    "password": "$2a$10$HsTT2paZclE.5L7LXRjPGewFb8lgC9x16Lh4wCwE6Ywe3xZkAmP6q",
+    "role": "barber",
+    "specialties": [
+      "Luxury Coloring",
+      "Balayage",
+      "Scalp Therapies"
+    ],
+    "experience": 6,
+    "rating": 5,
+    "bio": "Sophia is our premium dye technician and colorist. Master in highlight blends and luxury hot oil treatments.",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300",
+    "instagram": "@sophia_blend_colour",
+    "phone": "+1 (555) 019-5566",
+    "status": "active"
+  }
+]
