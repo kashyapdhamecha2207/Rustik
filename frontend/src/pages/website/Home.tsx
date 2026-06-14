@@ -303,7 +303,7 @@ export const Home = () => {
             <div>
               <h4 className="font-outfit text-xs font-bold tracking-widest uppercase text-gold">GET IN TOUCH</h4>
               <p className="text-xs text-stone-300 mt-1">PH: +1 (555) 019-2834</p>
-              <p className="text-xs text-stone-300">hello@rustikacademy.com</p>
+              <p className="text-xs text-stone-300">hello@rustiksalon.com</p>
             </div>
           </div>
         </div>

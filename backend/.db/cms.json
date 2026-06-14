@@ -1,13 +1,13 @@
 [
   {
-    "_id": "f0xcqc3x0",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "5mektmiiw",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "key": "homepage",
     "value": {
       "heroTitle": "CRAFTING LEGACY THROUGH LUXURY GROOMING",
-      "heroSubtitle": "Rustik Academy provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.",
-      "introText": "Established in 2020, Rustik Academy is a master-tier grooming lounge catering to gentlemen of high standard. Our studio is built on the foundations of heritage barbering and luxury wellness.",
+      "heroSubtitle": "Rustik Salon provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.",
+      "introText": "Established in 2020, Rustik Salon is a master-tier grooming lounge catering to gentlemen of high standard. Our studio is built on the foundations of heritage barbering and luxury wellness.",
       "studioHours": {
         "weekdays": "09:00 AM - 08:00 PM",
         "saturday": "09:00 AM - 06:00 PM",
@@ -19,9 +19,9 @@
     }
   },
   {
-    "_id": "ufkkve5r9",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "4m2hqonu1",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "key": "gallery",
     "value": [
       {
@@ -58,9 +58,9 @@
     ]
   },
   {
-    "_id": "8jmz70knv",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "kjtzcn2bu",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "key": "testimonials",
     "value": [
       {

@@ -74,7 +74,7 @@ router.get('/pdf', protect, authorizeRoles('owner', 'manager'), async (req, res)
 
     // Header / Branding
     doc.rect(0, 0, 612, 120).fill(FOREST);
-    doc.fillColor('#FFFFFF').fontSize(24).font('Helvetica-Bold').text('RUSTIK ACADEMY', 50, 35);
+    doc.fillColor('#FFFFFF').fontSize(24).font('Helvetica-Bold').text('RUSTIK SALON', 50, 35);
     doc.fillColor(GOLD).fontSize(12).font('Helvetica').text('Lounge & Premium Barber Portfolio Platform', 50, 65);
     doc.fillColor('#FFFFFF').fontSize(10).text(`Generated: ${new Date().toLocaleString()}`, 400, 45);
     doc.text(`Audited By: ${req.user.name} (${req.user.role.toUpperCase()})`, 400, 65);
@@ -145,7 +145,7 @@ router.get('/pdf', protect, authorizeRoles('owner', 'manager'), async (req, res)
 
     // Footnote
     doc.rect(50, 720, 512, 1).fill(GOLD);
-    doc.fillColor('#888888').fontSize(8).font('Helvetica').text('Rustik Academy Salon Management © 2026. Confidential Business Report.', 50, 730, { align: 'center' });
+    doc.fillColor('#888888').fontSize(8).font('Helvetica').text('Rustik Salon Salon Management © 2026. Confidential Business Report.', 50, 730, { align: 'center' });
 
     doc.end();
   } catch (error) {

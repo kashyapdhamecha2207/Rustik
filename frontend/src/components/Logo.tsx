@@ -70,7 +70,7 @@ export const Logo = ({ variant = 'dark', className = 'h-10' }) => {
             variant === 'dark' ? 'text-stone-400' : 'text-stone-600'
           }`}
         >
-          Academy
+          Salon
         </span>
       </div>
     </div>

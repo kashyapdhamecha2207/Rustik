@@ -161,7 +161,7 @@ export const Contact = () => {
               <Mail className="text-gold w-5 h-5 shrink-0" />
               <div className="flex flex-col leading-none">
                 <span className="text-[10px] text-stone-400 font-bold uppercase tracking-widest">EMAIL INQUIRIES</span>
-                <span className="font-outfit text-sm font-bold text-stone-800 mt-1.5">hello@rustikacademy.com</span>
+                <span className="font-outfit text-sm font-bold text-stone-800 mt-1.5">hello@rustiksalon.com</span>
               </div>
             </div>
 

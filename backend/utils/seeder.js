@@ -13,7 +13,7 @@ export const seedDatabase = async () => {
       return;
     }
 
-    console.log('🌱 Database is empty. Seeding default data for Rustik Academy...');
+    console.log('🌱 Database is empty. Seeding default data for Rustik Salon...');
 
     // 1. Create Default Users (Owner, Manager, Staff, Barbers)
     const owner = await User.create({
@@ -221,8 +221,8 @@ export const seedDatabase = async () => {
       {
         value: {
           heroTitle: 'CRAFTING LEGACY THROUGH LUXURY GROOMING',
-          heroSubtitle: 'Rustik Academy provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.',
-          introText: 'Established in 2020, Rustik Academy is a master-tier grooming lounge catering to gentlemen of high standard. Our studio is built on the foundations of heritage barbering and luxury wellness.',
+          heroSubtitle: 'Rustik Salon provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.',
+          introText: 'Established in 2020, Rustik Salon is a master-tier grooming lounge catering to gentlemen of high standard. Our studio is built on the foundations of heritage barbering and luxury wellness.',
           studioHours: {
             weekdays: '09:00 AM - 08:00 PM',
             saturday: '09:00 AM - 06:00 PM',
@@ -285,7 +285,7 @@ export const seedDatabase = async () => {
       }
     );
     console.log('✅ CMS Content Seeded.');
-    console.log('🌱 Rustik Academy database seeding complete!');
+    console.log('🌱 Rustik Salon database seeding complete!');
   } catch (error) {
     console.error('❌ Error seeding database:', error);
   }

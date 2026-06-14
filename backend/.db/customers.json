@@ -1,81 +1,81 @@
 [
   {
-    "_id": "gj6g1h9n6",
-    "createdAt": "2026-06-13T21:09:42.031Z",
-    "updatedAt": "2026-06-13T21:09:42.045Z",
+    "_id": "fb3f3n6pv",
+    "createdAt": "2026-06-14T17:57:22.209Z",
+    "updatedAt": "2026-06-14T17:57:22.231Z",
     "name": "Bruce Wayne",
     "email": "bruce@wayne.com",
     "phone": "+1 (555) 012-3456",
     "notes": "Prefers classic fade. Likes high-end pomade.",
     "$push": {
       "visits": {
-        "date": "2026-06-13",
+        "date": "2026-06-14",
         "services": [
-          "Signature Hair Coloring & Highlights"
+          "The Gentleman Combo"
         ],
-        "barberName": "Marcus Gold",
-        "amount": 120,
-        "appointmentId": "7yghiajua"
+        "barberName": "Sophia Blend",
+        "amount": 95,
+        "appointmentId": "g33woc6mm"
       }
     }
   },
   {
-    "_id": "jlitgv4pi",
-    "createdAt": "2026-06-13T21:09:42.032Z",
-    "updatedAt": "2026-06-13T21:09:42.045Z",
+    "_id": "3qeanfkwc",
+    "createdAt": "2026-06-14T17:57:22.209Z",
+    "updatedAt": "2026-06-14T17:57:22.230Z",
     "name": "Tony Stark",
     "email": "tony@stark.com",
     "phone": "+1 (555) 012-7890",
     "notes": "Wants sharp beard razor lines. Very specific about length.",
     "$push": {
       "visits": {
-        "date": "2026-06-13",
+        "date": "2026-06-12",
         "services": [
-          "Signature Hair Coloring & Highlights"
+          "Classic Fade"
         ],
         "barberName": "Alexander Cutz",
-        "amount": 120,
-        "appointmentId": "lgjcjhetm"
+        "amount": 45,
+        "appointmentId": "ef2948czo"
       }
     }
   },
   {
-    "_id": "l8c3qefu7",
-    "createdAt": "2026-06-13T21:09:42.032Z",
-    "updatedAt": "2026-06-13T21:09:42.043Z",
+    "_id": "bor7nrcty",
+    "createdAt": "2026-06-14T17:57:22.209Z",
+    "updatedAt": "2026-06-14T17:57:22.229Z",
     "name": "Clark Kent",
     "email": "clark@dailyplanet.com",
     "phone": "+1 (555) 012-1111",
     "notes": "Simple style, parting on the left side.",
     "$push": {
       "visits": {
-        "date": "2026-06-08",
+        "date": "2026-06-11",
         "services": [
-          "Royal Haircut & Styling"
+          "The Gentleman Combo"
         ],
         "barberName": "Alexander Cutz",
-        "amount": 65,
-        "appointmentId": "h3j9jlgqe"
+        "amount": 95,
+        "appointmentId": "tgycolnwy"
       }
     }
   },
   {
-    "_id": "shgobejvs",
-    "createdAt": "2026-06-13T21:09:42.032Z",
-    "updatedAt": "2026-06-13T21:09:42.044Z",
+    "_id": "yapzrv1eh",
+    "createdAt": "2026-06-14T17:57:22.209Z",
+    "updatedAt": "2026-06-14T17:57:22.231Z",
     "name": "Steve Rogers",
     "email": "steve@shield.gov",
     "phone": "+1 (555) 012-2222",
     "notes": "Clean cut. Always tips well.",
     "$push": {
       "visits": {
-        "date": "2026-06-11",
+        "date": "2026-06-14",
         "services": [
-          "Signature Hair Coloring & Highlights"
+          "Rustik Beard Sculpting & Razor Line"
         ],
-        "barberName": "Alexander Cutz",
-        "amount": 120,
-        "appointmentId": "nmveohoev"
+        "barberName": "Sophia Blend",
+        "amount": 40,
+        "appointmentId": "ukxcultt0"
       }
     }
   }

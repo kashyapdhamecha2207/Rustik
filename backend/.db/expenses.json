@@ -1,74 +1,74 @@
 [
   {
-    "_id": "c8tuqq7n2",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "3wuggflyz",
+    "createdAt": "2026-06-14T17:57:22.232Z",
+    "updatedAt": "2026-06-14T17:57:22.232Z",
     "category": "rent",
     "amount": 3500,
     "description": "Monthly lease for luxury studio space",
-    "date": "2026-05-16"
+    "date": "2026-05-17"
   },
   {
-    "_id": "a5mmvy0qe",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "3jgr5ym5g",
+    "createdAt": "2026-06-14T17:57:22.232Z",
+    "updatedAt": "2026-06-14T17:57:22.232Z",
     "category": "salary",
     "amount": 1500,
     "description": "Marcus commission & base",
-    "date": "2026-05-29"
+    "date": "2026-05-30"
   },
   {
-    "_id": "45lnu707v",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "qiilkxqbj",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "category": "salary",
     "amount": 1200,
     "description": "Alexander commission & base",
-    "date": "2026-05-29"
+    "date": "2026-05-30"
   },
   {
-    "_id": "7pveg8zur",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "ykggi25yk",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "category": "salary",
     "amount": 1400,
     "description": "Sophia commission & base",
-    "date": "2026-05-29"
+    "date": "2026-05-30"
   },
   {
-    "_id": "f2dh1y4cz",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "2ujkkaju4",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "category": "inventory",
     "amount": 450,
     "description": "Oribe styling products & beard pomades restocking",
-    "date": "2026-05-24"
+    "date": "2026-05-25"
   },
   {
-    "_id": "yt1fjbpxr",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "hyl6nrqhg",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "category": "utilities",
     "amount": 320,
     "description": "Electricity & Water",
-    "date": "2026-06-03"
+    "date": "2026-06-04"
   },
   {
-    "_id": "ueh4oh8lt",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "3hmwc35jx",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "category": "marketing",
     "amount": 600,
     "description": "Instagram target ad campaigns",
-    "date": "2026-06-08"
+    "date": "2026-06-09"
   },
   {
-    "_id": "ji0war69r",
-    "createdAt": "2026-06-13T21:09:42.047Z",
-    "updatedAt": "2026-06-13T21:09:42.047Z",
+    "_id": "xr55xep9q",
+    "createdAt": "2026-06-14T17:57:22.233Z",
+    "updatedAt": "2026-06-14T17:57:22.233Z",
     "category": "inventory",
     "amount": 150,
     "description": "Disinfectant barbicides and neck strips",
-    "date": "2026-06-11"
+    "date": "2026-06-12"
   }
 ]

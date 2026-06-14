@@ -11,8 +11,8 @@ export const ContentManager = () => {
   // CMS Homepage fields
   const [homepage, setHomepage] = useState({
     heroTitle: 'CRAFTING LEGACY THROUGH LUXURY GROOMING',
-    heroSubtitle: 'Rustik Academy provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.',
-    introText: 'Established in 2020, Rustik Academy is a master-tier grooming lounge catering to gentlemen of high standard.',
+    heroSubtitle: 'Rustik Salon provides custom haircutting, straight-razor work, and premium facial therapies in a forest-obsidian atmosphere.',
+    introText: 'Established in 2020, Rustik Salon is a master-tier grooming lounge catering to gentlemen of high standard.',
     studioHours: {
       weekdays: '09:00 AM - 08:00 PM',
       saturday: '09:00 AM - 06:00 PM',

@@ -146,7 +146,7 @@ export const CustomerLayout = ({ children }) => {
             </p>
             <p className="text-xs text-stone-400 mt-1">
               Ph: +1 (555) 019-2834<br />
-              Email: hello@rustikacademy.com
+              Email: hello@rustiksalon.com
             </p>
           </div>
 
@@ -157,7 +157,7 @@ export const CustomerLayout = ({ children }) => {
               Staff & Management Login
             </Link>
             <p className="text-[10px] text-stone-500 mt-1">
-              © {new Date().getFullYear()} Rustik Academy. All rights reserved.
+              © {new Date().getFullYear()} Rustik Salon. All rights reserved.
             </p>
           </div>
         </div>
