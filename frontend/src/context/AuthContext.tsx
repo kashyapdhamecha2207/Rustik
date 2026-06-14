@@ -1,6 +1,8 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(undefined);
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -20,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:5001/api/auth/login', {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   const updateProfile = async (updatedData) => {
     if (!token || !user) return;
     try {
-      const response = await fetch(`http://localhost:5001/api/auth/employees/${user._id}`, {
+      const response = await fetch(`${API_URL}/auth/employees/${user._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
