@@ -174,7 +174,7 @@ export const Home = () => {
                 <div className="h-48 overflow-hidden relative">
                   <img src={svc.image} alt={svc.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute top-4 right-4 bg-forest text-gold px-3 py-1 font-outfit text-xs font-bold rounded">
-                    ${svc.price}
+                    ₹{svc.price}
                   </div>
                 </div>
                 <div className="p-6 flex flex-col gap-3">

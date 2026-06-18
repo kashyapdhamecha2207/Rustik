@@ -5,7 +5,7 @@ import { apiFetch } from '../utils/api';
 import Logo from '../components/Logo';
 import { 
   KeyRound, Mail, AlertTriangle, ArrowLeft, LogOut, 
-  DollarSign, Users, Search, Phone, FileEdit, Plus, 
+  IndianRupee, Users, Search, Phone, FileEdit, Plus, 
   Trash2, Clock, RefreshCw, CheckCircle2 
 } from 'lucide-react';
 
@@ -511,11 +511,11 @@ export const Admin = () => {
             <div className="flex flex-col gap-1.5 relative z-10">
               <span className="font-outfit text-[10px] font-bold text-stone-400 tracking-wider uppercase">TODAY'S GROSS EARNINGS</span>
               <span className="text-3xl font-extrabold font-outfit text-white leading-none">
-                ${todayRevenue.toFixed(2)}
+                ₹{todayRevenue.toFixed(2)}
               </span>
             </div>
             <div className="p-4 bg-gold/10 text-gold rounded-full border border-gold/25 relative z-10 shadow-lg">
-              <DollarSign size={22} />
+              <IndianRupee size={22} />
             </div>
           </div>
 
@@ -580,7 +580,7 @@ export const Admin = () => {
                     {new Date(selectedHistoryDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })}
                   </span>
                   <div className="mt-3 flex items-baseline justify-between">
-                    <span className="text-2xl font-extrabold font-outfit text-white">${historyData.dailyRevenue.toFixed(2)}</span>
+                    <span className="text-2xl font-extrabold font-outfit text-white">₹{historyData.dailyRevenue.toFixed(2)}</span>
                     <span className="text-[10px] text-stone-400 font-sans">{historyData.dailyCustomers} customer{historyData.dailyCustomers !== 1 ? 's' : ''}</span>
                   </div>
                 </div>
@@ -592,7 +592,7 @@ export const Admin = () => {
                     {new Date(selectedHistoryDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                   </span>
                   <div className="mt-3 flex items-baseline justify-between">
-                    <span className="text-2xl font-extrabold font-outfit text-white">${historyData.monthlyRevenue.toFixed(2)}</span>
+                    <span className="text-2xl font-extrabold font-outfit text-white">₹{historyData.monthlyRevenue.toFixed(2)}</span>
                     <span className="text-[10px] text-stone-400 font-sans">{historyData.monthlyCustomers} customer{historyData.monthlyCustomers !== 1 ? 's' : ''}</span>
                   </div>
                 </div>
@@ -623,7 +623,7 @@ export const Admin = () => {
                         <div className="flex items-center justify-between sm:justify-end gap-6 min-w-0">
                           <span className="text-stone-300 italic truncate text-right">{tx.work}</span>
                           <div className="text-right shrink-0 flex flex-col items-end leading-tight">
-                            <span className="font-bold text-gold font-outfit text-xs">${tx.amount.toFixed(2)}</span>
+                            <span className="font-bold text-gold font-outfit text-xs">₹{tx.amount.toFixed(2)}</span>
                             <span className="text-[8px] text-stone-500 font-mono mt-0.5">{tx.time || 'Completed'}</span>
                           </div>
                         </div>
@@ -716,7 +716,7 @@ export const Admin = () => {
                   <div className="flex gap-4 shrink-0">
                     <div className="flex flex-col items-center bg-luxury-black px-3 py-1.5 rounded border border-luxury-gray text-center min-w-[70px]">
                       <span className="text-xs font-bold text-gold font-outfit">
-                        ${selectedCustomer.visits?.reduce((sum: number, v: any) => sum + v.amount, 0) || 0}
+                        ₹{selectedCustomer.visits?.reduce((sum: number, v: any) => sum + v.amount, 0) || 0}
                       </span>
                       <span className="text-[8px] text-stone-500 font-bold uppercase tracking-wider mt-0.5">Total Paid</span>
                     </div>
@@ -770,7 +770,7 @@ export const Admin = () => {
                             {visit.services?.join(', ') || 'Barber Work'}
                           </span>
                           <div className="text-right shrink-0 flex items-center gap-3 font-mono">
-                            <span className="text-xs font-bold text-gold font-outfit">${visit.amount}</span>
+                            <span className="text-xs font-bold text-gold font-outfit">₹{visit.amount}</span>
                             <span className="text-[9px] text-stone-500">{visit.date}</span>
                           </div>
                         </div>
@@ -866,7 +866,7 @@ export const Admin = () => {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="font-outfit text-[9px] font-bold text-stone-400 uppercase tracking-wider">Amount Charged ($) *</label>
+                <label className="font-outfit text-[9px] font-bold text-stone-400 uppercase tracking-wider">Amount Charged (₹) *</label>
                 <input
                   type="number"
                   required

@@ -100,7 +100,7 @@ export const Services = () => {
                       {svc.name}
                     </h3>
                     <span className="font-outfit text-base font-bold text-forest whitespace-nowrap bg-gold/10 text-gold px-2.5 py-0.5 rounded border border-gold/15">
-                      ${svc.price}
+                      ₹{svc.price}
                     </span>
                   </div>
 
@@ -113,12 +113,6 @@ export const Services = () => {
                       <Clock size={12} className="text-gold" />
                       {svc.duration} MINS
                     </span>
-                    <button
-                      onClick={() => navigate(`/contact?book=true&service=${svc._id}`)}
-                      className="font-outfit text-[10px] font-bold text-gold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"
-                    >
-                      Book Session <ArrowRight size={12} />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -134,14 +128,14 @@ export const Services = () => {
             </span>
             <h3 className="text-2xl font-bold font-display uppercase tracking-wide">Custom Grooming Consultations</h3>
             <p className="font-sans text-xs text-stone-300 leading-relaxed">
-              Don't see exactly what you're looking for? Our master barbers offer tailored styles and hair treatments during consultation. Book an open slot to design your signature look.
+              Don't see exactly what you're looking for? Our master barbers offer tailored styles and hair treatments during consultation. Get in touch to design your signature look.
             </p>
           </div>
           <button
-            onClick={() => navigate('/contact?book=true')}
+            onClick={() => navigate('/contact')}
             className="px-8 py-3.5 font-outfit text-xs font-bold uppercase tracking-widest gold-gradient-bg text-forest rounded shrink-0 shadow-md transition-luxury hover:scale-105"
           >
-            Schedule Consultation
+            Contact Us
           </button>
         </div>
       </section>
