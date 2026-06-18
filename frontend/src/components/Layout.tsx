@@ -59,12 +59,6 @@ export const CustomerLayout = ({ children }) => {
           {/* CTA & Mobile trigger */}
           <div className="flex items-center gap-4">
             <button
-              onClick={handleBookingClick}
-              className="hidden sm:inline-flex items-center justify-center px-5 py-2 font-outfit text-xs font-semibold uppercase tracking-widest gold-gradient-bg text-forest rounded shadow-md transition-luxury hover:scale-105"
-            >
-              Book Online
-            </button>
-            <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden p-2 text-stone-700 hover:text-gold transition-colors"
             >
@@ -88,15 +82,6 @@ export const CustomerLayout = ({ children }) => {
                 {link.name}
               </Link>
             ))}
-            <button
-              onClick={() => {
-                setMenuOpen(false);
-                handleBookingClick();
-              }}
-              className="w-full mt-4 py-3 font-outfit text-sm font-semibold uppercase tracking-widest gold-gradient-bg text-forest rounded"
-            >
-              Book Online
-            </button>
           </div>
         </div>
       )}
@@ -153,8 +138,8 @@ export const CustomerLayout = ({ children }) => {
           {/* Internal Quick Links */}
           <div className="flex flex-col gap-3">
             <h4 className="font-outfit text-xs font-semibold uppercase tracking-widest text-gold">Portal Access</h4>
-            <Link to="/login" className="text-xs text-stone-400 hover:text-gold transition-colors mt-2">
-              Staff & Management Login
+            <Link to="/admin" className="text-xs text-stone-400 hover:text-gold transition-colors mt-2">
+              Admin Console
             </Link>
             <p className="text-[10px] text-stone-500 mt-1">
               © {new Date().getFullYear()} Rustik Salon. All rights reserved.

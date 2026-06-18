@@ -80,14 +80,8 @@ export const Home = () => {
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
             <button 
-              onClick={() => navigate('/contact?book=true')}
-              className="px-8 py-3.5 font-outfit text-xs font-bold uppercase tracking-widest gold-gradient-bg text-forest rounded shadow-lg transition-luxury hover:scale-105"
-            >
-              Book Reservation
-            </button>
-            <button 
               onClick={() => navigate('/services')}
-              className="px-8 py-3.5 font-outfit text-xs font-bold uppercase tracking-widest border border-gold/40 text-gold rounded hover:bg-gold/10 transition-luxury"
+              className="px-8 py-3.5 font-outfit text-xs font-bold uppercase tracking-widest gold-gradient-bg text-forest rounded shadow-lg transition-luxury hover:scale-105"
             >
               Explore Services
             </button>
@@ -231,12 +225,6 @@ export const Home = () => {
                       </span>
                     ))}
                   </div>
-                  <button 
-                    onClick={() => navigate(`/contact?book=true&barber=${barber._id}`)}
-                    className="w-full mt-2 py-2 font-outfit text-[10px] font-bold uppercase tracking-widest border border-gold/30 text-gold hover:bg-gold hover:text-forest transition-luxury"
-                  >
-                    Select Artist
-                  </button>
                 </div>
               </div>
             ))}
