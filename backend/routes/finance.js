@@ -145,6 +145,57 @@ router.get('/analytics', protect, authorizeRoles('owner', 'manager', 'admin'), a
   }
 });
 
+// @desc    Get historical data for a specific date
+// @route   GET /api/finance/history
+// @access  Private (Owner, Manager, Admin)
+router.get('/history', protect, authorizeRoles('owner', 'manager', 'admin'), async (req, res) => {
+  try {
+    const { date } = req.query; // YYYY-MM-DD
+    if (!date) {
+      return res.status(400).json({ success: false, message: 'Please provide a date query parameter' });
+    }
+
+    const monthStr = date.substring(0, 7);
+
+    // Fetch all completed appointments/transactions
+    const appointments = await Appointment.find({ status: 'completed' });
+
+    // Calculate Daily Stats
+    const dailyAppts = appointments.filter(a => a.date === date);
+    const dailyRevenue = dailyAppts.reduce((sum, a) => sum + a.price, 0);
+    const dailyCustomers = dailyAppts.length;
+
+    // Detailed Daily Transactions List
+    const dailyTransactions = dailyAppts.map(a => ({
+      _id: a._id,
+      customerName: a.customerName,
+      customerPhone: a.customerPhone,
+      work: a.serviceName,
+      amount: a.price,
+      time: a.time,
+      date: a.date
+    }));
+
+    // Calculate Monthly Stats
+    const monthlyAppts = appointments.filter(a => a.date.startsWith(monthStr));
+    const monthlyRevenue = monthlyAppts.reduce((sum, a) => sum + a.price, 0);
+    const monthlyCustomers = monthlyAppts.length;
+
+    res.json({
+      success: true,
+      date,
+      month: monthStr,
+      dailyRevenue,
+      dailyCustomers,
+      dailyTransactions,
+      monthlyRevenue,
+      monthlyCustomers
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 // @desc    Get all expenses
 // @route   GET /api/finance/expenses
 // @access  Private (Owner or Manager)

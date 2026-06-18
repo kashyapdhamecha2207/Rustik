@@ -30,6 +30,11 @@ export const Admin = () => {
   const [todayCustomers, setTodayCustomers] = useState(0);
   const [analyticsLoading, setAnalyticsLoading] = useState(true);
 
+  // Historical Records States
+  const [selectedHistoryDate, setSelectedHistoryDate] = useState(new Date().toISOString().split('T')[0]);
+  const [historyData, setHistoryData] = useState<any>(null);
+  const [historyLoading, setHistoryLoading] = useState(false);
+
   // Customer Management States
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
@@ -73,6 +78,23 @@ export const Admin = () => {
     }
   };
 
+  // Fetch History Data
+  const fetchHistoryData = async (dateStr: string) => {
+    if (!dateStr) return;
+    try {
+      setHistoryLoading(true);
+      const response = await apiFetch(`/finance/history?date=${dateStr}`);
+      const data = await response.json();
+      if (data.success) {
+        setHistoryData(data);
+      }
+    } catch (err) {
+      console.error('Failed to fetch history data:', err);
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
+
   // Fetch Customer list
   const fetchCustomersList = async (search = '') => {
     try {
@@ -113,6 +135,12 @@ export const Admin = () => {
       fetchCustomersList(searchQuery);
     }
   }, [isAdminRole, searchQuery]);
+
+  useEffect(() => {
+    if (isAdminRole) {
+      fetchHistoryData(selectedHistoryDate);
+    }
+  }, [isAdminRole, selectedHistoryDate]);
 
   // Handle Admin Sign In
   const handleSubmitLogin = async (e: React.FormEvent) => {
@@ -224,6 +252,7 @@ export const Admin = () => {
         triggerNotification('Customer transaction logged successfully.');
         fetchCustomersList(searchQuery);
         fetchDashboardStats();
+        fetchHistoryData(selectedHistoryDate);
       } else {
         setAddError(data.message || 'Failed to record transaction.');
       }
@@ -510,6 +539,109 @@ export const Admin = () => {
               <Users size={22} />
             </div>
           </div>
+        </div>
+
+        {/* Historical Records & Calendar Section */}
+        <div className="bg-luxury-dark border border-luxury-gray p-6 rounded-lg flex flex-col gap-6 relative overflow-hidden shadow-xl">
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-2xl pointer-events-none" />
+          
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-luxury-gray pb-4">
+            <div className="flex flex-col">
+              <h3 className="font-outfit text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                📅 Historical Records & Calendar Lookup
+              </h3>
+              <span className="text-[11px] text-stone-400 font-sans mt-1">
+                Select a date to view past daily work records and compare with total monthly earnings.
+              </span>
+            </div>
+            
+            <div className="flex items-center gap-3 shrink-0">
+              <label className="font-outfit text-[10px] font-bold text-stone-400 uppercase tracking-wider">Select Date:</label>
+              <input
+                type="date"
+                value={selectedHistoryDate}
+                onChange={(e) => setSelectedHistoryDate(e.target.value)}
+                className="bg-luxury-black border border-luxury-gray text-white p-2 text-xs rounded focus:outline-none focus:border-gold font-sans cursor-pointer hover:border-gold/60 transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* History Data View */}
+          {historyLoading ? (
+            <div className="flex justify-center py-12">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gold" />
+            </div>
+          ) : !historyData ? (
+            <div className="text-center py-12 text-stone-500 text-xs font-outfit">
+              No historical data loaded. Select a date above to query.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              
+              {/* Day & Month Summary Column (4 cols) */}
+              <div className="lg:col-span-4 flex flex-col gap-4">
+                {/* Daily Card */}
+                <div className="bg-luxury-black border border-luxury-gray p-4 rounded flex flex-col gap-1 relative overflow-hidden">
+                  <span className="font-outfit text-[9px] font-bold text-gold tracking-widest uppercase">DAILY SUMMARY</span>
+                  <span className="text-stone-400 text-[10px] font-sans">
+                    {new Date(selectedHistoryDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })}
+                  </span>
+                  <div className="mt-3 flex items-baseline justify-between">
+                    <span className="text-2xl font-extrabold font-outfit text-white">${historyData.dailyRevenue.toFixed(2)}</span>
+                    <span className="text-[10px] text-stone-400 font-sans">{historyData.dailyCustomers} customer{historyData.dailyCustomers !== 1 ? 's' : ''}</span>
+                  </div>
+                </div>
+
+                {/* Monthly Card */}
+                <div className="bg-luxury-black border border-luxury-gray p-4 rounded flex flex-col gap-1 relative overflow-hidden">
+                  <span className="font-outfit text-[9px] font-bold text-gold tracking-widest uppercase">MONTHLY SUMMARY</span>
+                  <span className="text-stone-400 text-[10px] font-sans">
+                    {new Date(selectedHistoryDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                  </span>
+                  <div className="mt-3 flex items-baseline justify-between">
+                    <span className="text-2xl font-extrabold font-outfit text-white">${historyData.monthlyRevenue.toFixed(2)}</span>
+                    <span className="text-[10px] text-stone-400 font-sans">{historyData.monthlyCustomers} customer{historyData.monthlyCustomers !== 1 ? 's' : ''}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Transactions Ledger List (8 cols) */}
+              <div className="lg:col-span-8 bg-luxury-black border border-luxury-gray rounded p-4 flex flex-col gap-3 min-h-[180px]">
+                <h4 className="font-outfit text-[10px] font-bold text-stone-400 uppercase tracking-wider border-b border-luxury-gray pb-2 flex items-center justify-between">
+                  <span>📝 Transactions Ledger</span>
+                  <span className="text-[9px] font-sans text-stone-500 font-normal">Showing {historyData.dailyTransactions.length} records</span>
+                </h4>
+
+                {historyData.dailyTransactions.length === 0 ? (
+                  <div className="flex-grow flex items-center justify-center py-8 text-stone-500 text-xs italic font-sans">
+                    No transactions recorded on this date.
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto pr-1">
+                    {historyData.dailyTransactions.map((tx: any, idx: number) => (
+                      <div 
+                        key={tx._id || idx} 
+                        className="bg-luxury-dark border border-luxury-gray p-3 rounded flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-sans hover:border-gold/30 transition-colors"
+                      >
+                        <div className="flex flex-col min-w-0">
+                          <span className="font-semibold text-white uppercase truncate">{tx.customerName}</span>
+                          <span className="text-[9px] text-stone-500 mt-0.5 font-mono">{tx.customerPhone}</span>
+                        </div>
+                        <div className="flex items-center justify-between sm:justify-end gap-6 min-w-0">
+                          <span className="text-stone-300 italic truncate text-right">{tx.work}</span>
+                          <div className="text-right shrink-0 flex flex-col items-end leading-tight">
+                            <span className="font-bold text-gold font-outfit text-xs">${tx.amount.toFixed(2)}</span>
+                            <span className="text-[8px] text-stone-500 font-mono mt-0.5">{tx.time || 'Completed'}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+            </div>
+          )}
         </div>
 
         {/* Split Section: Customer list & Customer actions details */}
