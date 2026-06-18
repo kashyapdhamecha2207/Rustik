@@ -335,15 +335,15 @@ export const Admin = () => {
             /* Login Form */
             <form onSubmit={handleSubmitLogin} className="w-full flex flex-col gap-5">
               <div className="flex flex-col gap-2">
-                <label className="font-outfit text-[10px] font-bold text-stone-400 uppercase tracking-wider">Admin Email</label>
+                <label className="font-outfit text-[10px] font-bold text-stone-400 uppercase tracking-wider">Admin Username</label>
                 <div className="relative">
                   <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
                   <input
-                    type="email"
+                    type="text"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="admin@rustik.com"
+                    placeholder="Enter admin username"
                     className="w-full bg-luxury-black border border-luxury-gray text-white p-3 pl-11 text-xs rounded focus:outline-none focus:border-gold transition-colors font-sans"
                   />
                 </div>
@@ -423,13 +423,6 @@ export const Admin = () => {
               </button>
             </form>
           )}
-
-          {/* Prompt regarding admin credentials */}
-          <div className="w-full border-t border-luxury-gray pt-5 text-center flex flex-col gap-2 select-none text-[10px] font-sans text-stone-500">
-            <span className="font-outfit text-[9px] font-bold tracking-widest uppercase">ADMIN SECURE CREDENTIALS</span>
-            <p>Email: <span className="text-stone-400 font-semibold">admin@rustik.com</span></p>
-            <p>Password: <span className="text-stone-400 font-semibold">password123</span></p>
-          </div>
 
         </div>
       </div>

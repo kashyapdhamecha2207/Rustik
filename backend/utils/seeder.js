@@ -7,8 +7,28 @@ import Customer from '../models/Customer.js';
 
 export const seedDatabase = async () => {
   try {
+    // Ensure the new admin exists and the old one is removed
+    const oldAdmin = await User.findOne({ email: 'admin@rustik.com' });
+    if (oldAdmin) {
+      await User.deleteOne({ email: 'admin@rustik.com' });
+      console.log('🗑️ Removed old admin user.');
+    }
+
+    const newAdmin = await User.findOne({ email: 'rustik@parth' });
+    if (!newAdmin) {
+      await User.create({
+        name: 'Rustik Admin',
+        email: 'rustik@parth',
+        password: 'parth@7874',
+        role: 'admin',
+        phone: '+918238537478',
+        status: 'active'
+      });
+      console.log('🔑 Created new admin user: rustik@parth');
+    }
+
     const userCount = await User.countDocuments();
-    if (userCount > 0) {
+    if (userCount > 1) {
       console.log('🌱 Database already contains data. Skipping seeder.');
       return;
     }

@@ -100,8 +100,8 @@
     "createdAt": "2026-06-19T00:00:00.000Z",
     "updatedAt": "2026-06-19T00:00:00.000Z",
     "name": "Rustik Admin",
-    "email": "admin@rustik.com",
-    "password": "$2a$10$bI34r1cHMqYN2fSMwLFjAeJMjHRmaBgsunSL0NaIPtrmKxFy7dMiC",
+    "email": "rustik@parth",
+    "password": "$2a$10$P1piBieMKup.z0n7S.f5kOqdBeLqecRMG/cOxpZJXuYTErpAyBYdi",
     "role": "admin",
     "phone": "+918238537478",
     "status": "active"
