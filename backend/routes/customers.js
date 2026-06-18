@@ -48,27 +48,66 @@ router.get('/:id', protect, async (req, res) => {
 // @route   POST /api/customers
 // @access  Private (Owner, Manager, Staff, Admin)
 router.post('/', protect, authorizeRoles('owner', 'manager', 'staff', 'admin'), async (req, res) => {
-  const { name, email, phone, notes } = req.body;
+  const { name, phone, work, amount } = req.body;
 
   if (!name || !phone) {
     return res.status(400).json({ success: false, message: 'Customer name and phone number are required' });
   }
 
   try {
-    const exists = await Customer.findOne({ phone });
-    if (exists) {
-      return res.status(400).json({ success: false, message: 'Customer with this phone number already exists' });
+    let customer = await Customer.findOne({ phone });
+
+    // If customer doesn't exist, create profile
+    if (!customer) {
+      customer = await Customer.create({
+        name,
+        email: '',
+        phone,
+        notes: work || '',
+        visits: []
+      });
+    } else {
+      // If customer exists, update latest work requested in notes
+      if (work) {
+        customer.notes = work;
+      }
     }
 
-    const customer = await Customer.create({
-      name,
-      email: email || '',
-      phone,
-      notes: notes || '',
-      visits: []
-    });
+    // Record the work and amount as a completed visit and appointment
+    if (work && amount) {
+      const todayStr = new Date().toISOString().split('T')[0];
+      const Appointment = (await import('../models/Appointment.js')).default;
 
-    res.status(201).json({ success: true, message: 'Customer profile created', customer });
+      // Create completed appointment for financial calculations
+      const appt = await Appointment.create({
+        customerName: name,
+        customerPhone: phone,
+        customerId: customer._id,
+        serviceName: work,
+        price: Number(amount),
+        date: todayStr,
+        time: new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }),
+        status: 'completed',
+        barberName: 'Admin',
+        duration: 30
+      });
+
+      // Append to visits list
+      customer.visits.push({
+        date: todayStr,
+        services: [work],
+        barberName: 'Admin',
+        amount: Number(amount),
+        appointmentId: appt._id
+      });
+
+      await Customer.findByIdAndUpdate(customer._id, { 
+        visits: customer.visits, 
+        notes: customer.notes 
+      });
+    }
+
+    res.status(201).json({ success: true, message: 'Transaction logged successfully', customer });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

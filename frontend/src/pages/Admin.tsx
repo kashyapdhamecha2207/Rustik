@@ -42,8 +42,8 @@ export const Admin = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newCustName, setNewCustName] = useState('');
   const [newCustPhone, setNewCustPhone] = useState('');
-  const [newCustEmail, setNewCustEmail] = useState('');
-  const [newCustNotes, setNewCustNotes] = useState('');
+  const [newCustWork, setNewCustWork] = useState('');
+  const [newCustAmount, setNewCustAmount] = useState('');
   const [addError, setAddError] = useState('');
   const [addLoading, setAddLoading] = useState(false);
 
@@ -198,8 +198,8 @@ export const Admin = () => {
     e.preventDefault();
     setAddError('');
 
-    if (!newCustName || !newCustPhone) {
-      setAddError('Customer Name and Phone are required.');
+    if (!newCustName || !newCustPhone || !newCustWork || !newCustAmount) {
+      setAddError('All fields (Name, Phone, Work Done, Amount) are required.');
       return;
     }
 
@@ -210,22 +210,22 @@ export const Admin = () => {
         body: JSON.stringify({
           name: newCustName,
           phone: newCustPhone,
-          email: newCustEmail,
-          notes: newCustNotes
+          work: newCustWork,
+          amount: newCustAmount
         })
       });
       const data = await response.json();
       if (data.success) {
         setShowAddModal(false);
-        // Clear fields
         setNewCustName('');
         setNewCustPhone('');
-        setNewCustEmail('');
-        setNewCustNotes('');
-        triggerNotification('New client registered successfully.');
+        setNewCustWork('');
+        setNewCustAmount('');
+        triggerNotification('Customer transaction logged successfully.');
         fetchCustomersList(searchQuery);
+        fetchDashboardStats();
       } else {
-        setAddError(data.message || 'Failed to add customer profile.');
+        setAddError(data.message || 'Failed to record transaction.');
       }
     } catch (err) {
       setAddError('A network error occurred.');
@@ -476,7 +476,7 @@ export const Admin = () => {
               onClick={() => setShowAddModal(true)}
               className="px-5 py-2.5 font-outfit text-xs font-semibold uppercase tracking-wider gold-gradient-bg text-forest rounded shadow-md flex items-center gap-2 transition-luxury hover:scale-[1.03]"
             >
-              <Plus size={14} /> Register Customer
+              <Plus size={14} /> Log Work / Transaction
             </button>
           </div>
         </div>
@@ -590,47 +590,39 @@ export const Admin = () => {
 
                   <div className="flex gap-4 shrink-0">
                     <div className="flex flex-col items-center bg-luxury-black px-3 py-1.5 rounded border border-luxury-gray text-center min-w-[70px]">
-                      <span className="text-xs font-bold text-white font-outfit">{selectedCustomer.visits?.length || 0}</span>
-                      <span className="text-[8px] text-stone-500 font-bold uppercase tracking-wider mt-0.5">Visits</span>
-                    </div>
-                    <div className="flex flex-col items-center bg-luxury-black px-3 py-1.5 rounded border border-luxury-gray text-center min-w-[70px]">
                       <span className="text-xs font-bold text-gold font-outfit">
                         ${selectedCustomer.visits?.reduce((sum: number, v: any) => sum + v.amount, 0) || 0}
                       </span>
-                      <span className="text-[8px] text-stone-500 font-bold uppercase tracking-wider mt-0.5">Spent</span>
+                      <span className="text-[8px] text-stone-500 font-bold uppercase tracking-wider mt-0.5">Total Paid</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Profile Contact Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-xs text-stone-300">
+                <div className="font-sans text-xs text-stone-300">
                   <div className="flex items-center gap-2">
                     <Phone size={14} className="text-gold shrink-0" />
                     <span>Phone: <strong className="font-mono">{selectedCustomer.phone}</strong></span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail size={14} className="text-gold shrink-0" />
-                    <span className="truncate">Email: {selectedCustomer.email || 'None Registered'}</span>
                   </div>
                 </div>
 
                 {/* Styling Notes editor */}
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between text-[10px] font-bold text-stone-400 uppercase tracking-wider font-outfit border-b border-luxury-gray pb-1.5">
-                    <span className="flex items-center gap-1.5"><FileEdit size={12} /> Client Preferences & Style Notes</span>
+                    <span className="flex items-center gap-1.5"><FileEdit size={12} /> Work Requested / Notes</span>
                     <button 
                       onClick={handleUpdateNotes}
                       disabled={updatingNotes}
                       className="text-gold hover:underline font-bold transition-opacity disabled:opacity-50"
                     >
-                      {updatingNotes ? 'Saving Notes...' : 'Save Notes'}
+                      {updatingNotes ? 'Saving...' : 'Save Changes'}
                     </button>
                   </div>
                   <textarea
                     value={notesText}
                     onChange={(e) => setNotesText(e.target.value)}
-                    rows={3}
-                    placeholder="Input hair preferences, scalp issues, clipper settings, and visit notes here..."
+                    rows={2}
+                    placeholder="e.g. Haircut or beard grooming notes..."
                     className="w-full bg-luxury-black border border-luxury-gray text-stone-200 text-xs p-3 rounded focus:outline-none focus:border-gold font-sans leading-relaxed"
                   />
                 </div>
@@ -638,28 +630,23 @@ export const Admin = () => {
                 {/* Visits history timeline */}
                 <div className="flex flex-col gap-3">
                   <h4 className="font-outfit text-[10px] font-bold text-stone-400 uppercase tracking-wider border-b border-luxury-gray pb-1.5 flex items-center gap-1.5">
-                    <Clock size={12} /> Visit Ledger Transactions
+                    <Clock size={12} /> Transaction Ledger
                   </h4>
                   
                   {!selectedCustomer.visits || selectedCustomer.visits.length === 0 ? (
-                    <div className="text-stone-500 text-xs italic py-4">
-                      No visits logged in history database for this client.
+                    <div className="text-stone-500 text-xs italic py-2">
+                      No logged transactions.
                     </div>
                   ) : (
-                    <div className="flex flex-col gap-3 max-h-[160px] overflow-y-auto pr-1">
+                    <div className="flex flex-col gap-2.5 max-h-[160px] overflow-y-auto pr-1">
                       {selectedCustomer.visits.map((visit: any, idx: number) => (
-                        <div key={idx} className="bg-luxury-black border border-luxury-gray p-3 rounded flex items-center justify-between gap-4 font-sans text-xs">
-                          <div className="flex flex-col leading-tight min-w-0">
-                            <span className="font-semibold text-white uppercase truncate">
-                              {visit.services?.join(', ') || 'Barber Treatment'}
-                            </span>
-                            <span className="text-[10px] text-stone-400 mt-1 uppercase">
-                              Artist: {visit.barberName}
-                            </span>
-                          </div>
-                          <div className="text-right shrink-0 flex flex-col gap-1 items-end leading-none font-mono">
+                        <div key={idx} className="bg-luxury-black border border-luxury-gray p-2.5 rounded flex items-center justify-between gap-4 font-sans text-xs">
+                          <span className="font-semibold text-white uppercase truncate">
+                            {visit.services?.join(', ') || 'Barber Work'}
+                          </span>
+                          <div className="text-right shrink-0 flex items-center gap-3 font-mono">
                             <span className="text-xs font-bold text-gold font-outfit">${visit.amount}</span>
-                            <span className="text-[9px] text-stone-500 mt-1">{visit.date}</span>
+                            <span className="text-[9px] text-stone-500">{visit.date}</span>
                           </div>
                         </div>
                       ))}
@@ -695,12 +682,12 @@ export const Admin = () => {
 
       </main>
 
-      {/* REGISTER CUSTOMER DIALOG MODAL */}
+      {/* LOG CUSTOMER WORK DIALOG MODAL */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-luxury-dark border-2 border-gold max-w-md w-full rounded-lg overflow-hidden shadow-2xl flex flex-col">
             <div className="p-4 border-b border-luxury-gray flex items-center justify-between bg-luxury-black/40">
-              <h3 className="font-outfit text-xs font-bold uppercase tracking-widest text-gold">REGISTER NEW CLIENT</h3>
+              <h3 className="font-outfit text-xs font-bold uppercase tracking-widest text-gold">LOG NEW CUSTOMER WORK</h3>
               <button 
                 onClick={() => setShowAddModal(false)} 
                 className="text-stone-400 hover:text-white transition-colors"
@@ -736,29 +723,31 @@ export const Admin = () => {
                   required
                   value={newCustPhone}
                   onChange={(e) => setNewCustPhone(e.target.value)}
-                  placeholder="e.g. +1 (555) 123-4567"
+                  placeholder="e.g. +91 82385 37478"
                   className="bg-luxury-black border border-luxury-gray text-white p-2.5 rounded text-xs focus:outline-none focus:border-gold font-sans"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="font-outfit text-[9px] font-bold text-stone-400 uppercase tracking-wider">Email Address</label>
+                <label className="font-outfit text-[9px] font-bold text-stone-400 uppercase tracking-wider">Work Done *</label>
                 <input
-                  type="email"
-                  value={newCustEmail}
-                  onChange={(e) => setNewCustEmail(e.target.value)}
-                  placeholder="e.g. liam@example.com"
+                  type="text"
+                  required
+                  value={newCustWork}
+                  onChange={(e) => setNewCustWork(e.target.value)}
+                  placeholder="e.g. Hair cutting, beard trim, coloring..."
                   className="bg-luxury-black border border-luxury-gray text-white p-2.5 rounded text-xs focus:outline-none focus:border-gold font-sans"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="font-outfit text-[9px] font-bold text-stone-400 uppercase tracking-wider">Initial Styling Notes</label>
-                <textarea
-                  value={newCustNotes}
-                  onChange={(e) => setNewCustNotes(e.target.value)}
-                  placeholder="Sensitive skin, scissor cuts, styled locks, etc."
-                  rows={2}
+                <label className="font-outfit text-[9px] font-bold text-stone-400 uppercase tracking-wider">Amount Charged ($) *</label>
+                <input
+                  type="number"
+                  required
+                  value={newCustAmount}
+                  onChange={(e) => setNewCustAmount(e.target.value)}
+                  placeholder="e.g. 50"
                   className="bg-luxury-black border border-luxury-gray text-white p-2.5 rounded text-xs focus:outline-none focus:border-gold font-sans"
                 />
               </div>
@@ -776,7 +765,7 @@ export const Admin = () => {
                   disabled={addLoading}
                   className="px-5 py-2.5 rounded font-outfit text-[10px] font-bold uppercase tracking-widest gold-gradient-bg text-forest shadow-md transition-luxury hover:scale-[1.03]"
                 >
-                  {addLoading ? 'Registering...' : 'Save Profile'}
+                  {addLoading ? 'Recording...' : 'Log Transaction'}
                 </button>
               </div>
             </form>
