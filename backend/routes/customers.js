@@ -46,8 +46,8 @@ router.get('/:id', protect, async (req, res) => {
 
 // @desc    Add customer manually from dashboard
 // @route   POST /api/customers
-// @access  Private (Owner, Manager, Staff)
-router.post('/', protect, authorizeRoles('owner', 'manager', 'staff'), async (req, res) => {
+// @access  Private (Owner, Manager, Staff, Admin)
+router.post('/', protect, authorizeRoles('owner', 'manager', 'staff', 'admin'), async (req, res) => {
   const { name, email, phone, notes } = req.body;
 
   if (!name || !phone) {
@@ -92,8 +92,8 @@ router.put('/:id', protect, async (req, res) => {
 
 // @desc    Delete customer profile
 // @route   DELETE /api/customers/:id
-// @access  Private (Owner or Manager)
-router.delete('/:id', protect, authorizeRoles('owner', 'manager'), async (req, res) => {
+// @access  Private (Owner, Manager, Admin)
+router.delete('/:id', protect, authorizeRoles('owner', 'manager', 'admin'), async (req, res) => {
   try {
     const customer = await Customer.findById(req.params.id);
     if (!customer) {

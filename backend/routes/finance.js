@@ -8,8 +8,8 @@ const router = express.Router();
 
 // @desc    Get dashboard analytics data
 // @route   GET /api/finance/analytics
-// @access  Private (Owner or Manager)
-router.get('/analytics', protect, authorizeRoles('owner', 'manager'), async (req, res) => {
+// @access  Private (Owner, Manager, Admin)
+router.get('/analytics', protect, authorizeRoles('owner', 'manager', 'admin'), async (req, res) => {
   try {
     const todayStr = new Date().toISOString().split('T')[0];
     const today = new Date();

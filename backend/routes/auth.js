@@ -2,9 +2,11 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import { protect, authorizeRoles } from '../middleware/auth.js';
+import { sendSMS } from '../utils/sms.js';
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'rustik_academy_super_secret_key_123';
+const adminOtps = new Map();
 
 const generateToken = (id) => {
   return jwt.sign({ id }, JWT_SECRET, { expiresIn: '30d' });
@@ -37,6 +39,89 @@ router.post('/login', async (req, res) => {
     if (user.status === 'inactive') {
       return res.status(403).json({ success: false, message: 'Your account is deactivated.' });
     }
+
+    // OTP Flow for admin
+    if (user.role === 'admin') {
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      const expires = Date.now() + 5 * 60 * 1000; // 5 minutes
+      adminOtps.set(email.toLowerCase(), { otp, expires, userId: user._id });
+
+      const targetPhone = user.phone || '+918238537478';
+      const messageBody = `🔑 RUSTIK SALON: Your Admin Verification OTP is: ${otp}. Valid for 5 minutes. Do not share this code.`;
+
+      try {
+        await sendSMS(targetPhone, messageBody);
+      } catch (smsError) {
+        console.error('⚠️ [OTP SMS FAILED] Could not send OTP SMS:', smsError.message);
+      }
+
+      console.log('\n==================================================');
+      console.log(`🔑 [OTP SECURITY] Admin OTP for ${email} is: ${otp}`);
+      console.log(`Sent to: ${targetPhone}`);
+      console.log('Valid for 5 minutes.');
+      console.log('==================================================\n');
+
+      return res.json({
+        success: true,
+        requireOTP: true,
+        email: email.toLowerCase()
+      });
+    }
+
+    res.json({
+      success: true,
+      token: generateToken(user._id),
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        avatar: user.avatar,
+        specialties: user.specialties,
+        experience: user.experience,
+        rating: user.rating,
+        phone: user.phone
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// @desc    Verify OTP & get token
+// @route   POST /api/auth/verify-otp
+// @access  Public
+router.post('/verify-otp', async (req, res) => {
+  const { email, otp } = req.body;
+
+  if (!email || !otp) {
+    return res.status(400).json({ success: false, message: 'Please provide email and OTP code' });
+  }
+
+  try {
+    const normalizedEmail = email.toLowerCase();
+    const record = adminOtps.get(normalizedEmail);
+
+    if (!record) {
+      return res.status(400).json({ success: false, message: 'No active OTP verification session found' });
+    }
+
+    if (Date.now() > record.expires) {
+      adminOtps.delete(normalizedEmail);
+      return res.status(400).json({ success: false, message: 'OTP has expired. Please log in again.' });
+    }
+
+    if (record.otp !== otp) {
+      return res.status(400).json({ success: false, message: 'Invalid OTP code. Please try again.' });
+    }
+
+    const user = await User.findById(record.userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User profile not found' });
+    }
+
+    // Clear OTP record
+    adminOtps.delete(normalizedEmail);
 
     res.json({
       success: true,

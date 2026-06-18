@@ -36,6 +36,10 @@ export const AuthProvider = ({ children }) => {
         throw new Error(data.message || 'Login failed');
       }
 
+      if (data.requireOTP) {
+        return data;
+      }
+
       localStorage.setItem('rustik_user', JSON.stringify(data.user));
       localStorage.setItem('rustik_token', data.token);
 
@@ -44,6 +48,34 @@ export const AuthProvider = ({ children }) => {
       return data.user;
     } catch (error) {
       console.error('Login error:', error);
+      throw error;
+    }
+  };
+
+  const verifyOTP = async (email, otp) => {
+    try {
+      const response = await fetch(`${API_URL}/auth/verify-otp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, otp }),
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.message || 'OTP verification failed');
+      }
+
+      localStorage.setItem('rustik_user', JSON.stringify(data.user));
+      localStorage.setItem('rustik_token', data.token);
+
+      setUser(data.user);
+      setToken(data.token);
+      return data.user;
+    } catch (error) {
+      console.error('OTP verification error:', error);
       throw error;
     }
   };
@@ -78,11 +110,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const isAdmin = user && (user.role === 'owner' || user.role === 'manager');
+  const isAdmin = user && (user.role === 'owner' || user.role === 'manager' || user.role === 'admin');
   const isBarber = user && user.role === 'barber';
+  const isAdminRole = user && user.role === 'admin';
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, logout, isAdmin, isBarber, updateProfile }}>
+    <AuthContext.Provider value={{ user, token, loading, login, logout, isAdmin, isBarber, isAdminRole, updateProfile, verifyOTP }}>
       {children}
     </AuthContext.Provider>
   );

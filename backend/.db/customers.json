@@ -1,25 +1,5 @@
 [
   {
-    "_id": "fb3f3n6pv",
-    "createdAt": "2026-06-14T17:57:22.209Z",
-    "updatedAt": "2026-06-14T17:57:22.231Z",
-    "name": "Bruce Wayne",
-    "email": "bruce@wayne.com",
-    "phone": "+1 (555) 012-3456",
-    "notes": "Prefers classic fade. Likes high-end pomade.",
-    "$push": {
-      "visits": {
-        "date": "2026-06-14",
-        "services": [
-          "The Gentleman Combo"
-        ],
-        "barberName": "Sophia Blend",
-        "amount": 95,
-        "appointmentId": "g33woc6mm"
-      }
-    }
-  },
-  {
     "_id": "3qeanfkwc",
     "createdAt": "2026-06-14T17:57:22.209Z",
     "updatedAt": "2026-06-14T17:57:22.230Z",
@@ -78,5 +58,15 @@
         "appointmentId": "ukxcultt0"
       }
     }
+  },
+  {
+    "_id": "jyd88pjpx",
+    "createdAt": "2026-06-18T20:53:25.932Z",
+    "updatedAt": "2026-06-18T20:53:25.932Z",
+    "name": "kashyap",
+    "email": "bsdjfbfsbf@gmail.com",
+    "phone": "78423438",
+    "notes": "wold",
+    "visits": []
   }
 ]

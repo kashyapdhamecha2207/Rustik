@@ -14,6 +14,7 @@ import Contact from './pages/website/Contact';
 
 // Portal / Admin
 import Login from './pages/Login';
+import Admin from './pages/Admin';
 import Overview from './pages/dashboard/Overview';
 import Appointments from './pages/dashboard/Appointments';
 import Customers from './pages/dashboard/Customers';
@@ -67,6 +68,7 @@ function App() {
                 2. SECURITY PORTAL (No Layout / Standalone)
                ======================================================== */}
             <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
 
             {/* ========================================================
                 3. MANAGEMENT DASHBOARD ROUTES (DashboardLayout)
