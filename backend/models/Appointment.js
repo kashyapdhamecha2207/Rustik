@@ -7,10 +7,10 @@ const appointmentSchema = new mongoose.Schema({
   customerPhone: { type: String, required: true },
   customerEmail: { type: String, default: '' },
   customerId: { type: String, default: '' },
-  serviceId: { type: String, required: true },
+  serviceId: { type: String, default: '' },
   serviceName: { type: String, required: true },
-  barberId: { type: String, required: true },
-  barberName: { type: String, required: true },
+  barberId: { type: String, default: '' },
+  barberName: { type: String, default: 'Admin' },
   date: { type: String, required: true }, // YYYY-MM-DD
   time: { type: String, required: true }, // HH:MM
   duration: { type: Number, default: 30 }, // in minutes
