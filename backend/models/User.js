@@ -5,7 +5,7 @@ import { MockUsers } from '../utils/mockDb.js';
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   password: { type: String, required: true },
   role: { 
     type: String, 
@@ -48,9 +48,18 @@ const UserMongoose = mongoose.models.User || mongoose.model('User', userSchema);
 // Custom wrapper to match methods on both Mongoose and Mock collection
 const UserWrapper = {
   find: (query) => getModel(UserMongoose, MockUsers).find(query),
-  findOne: (query) => getModel(UserMongoose, MockUsers).findOne(query),
+  findOne: (query) => {
+    // Normalize email query if present
+    if (query && query.email) {
+      query.email = query.email.trim().toLowerCase();
+    }
+    return getModel(UserMongoose, MockUsers).findOne(query);
+  },
   findById: (id) => getModel(UserMongoose, MockUsers).findById(id),
   create: async (data) => {
+    if (data.email) {
+      data.email = data.email.trim().toLowerCase();
+    }
     // If mock DB is active, create in mock collection
     if (global.isMockDB) {
       if (data.password) {

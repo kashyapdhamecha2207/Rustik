@@ -26,14 +26,16 @@ export const Login = () => {
     e.preventDefault();
     setError('');
     
-    if (!email || !password) {
+    const normalizedEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
+
+    if (!normalizedEmail || !password) {
       setError('Please enter both email and password.');
       return;
     }
 
     setLoading(true);
     try {
-      await login(email, password);
+      await login(normalizedEmail, password);
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Invalid email or password.');

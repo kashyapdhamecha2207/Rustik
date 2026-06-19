@@ -1,12 +1,16 @@
-import User from '../models/User.js';
+import User, { UserMongoose } from '../models/User.js';
 import Service from '../models/Service.js';
 import Appointment from '../models/Appointment.js';
 import Expense from '../models/Expense.js';
 import CMS from '../models/CMS.js';
 import Customer from '../models/Customer.js';
+import bcrypt from 'bcryptjs';
 
 export const seedDatabase = async () => {
   try {
+    const adminEmail = 'rustik@parth';
+    const adminPassword = 'parth@7874';
+
     // Ensure the new admin exists and the old one is removed
     const oldAdmin = await User.findOne({ email: 'admin@rustik.com' });
     if (oldAdmin) {
@@ -14,17 +18,36 @@ export const seedDatabase = async () => {
       console.log('🗑️ Removed old admin user.');
     }
 
-    const newAdmin = await User.findOne({ email: 'rustik@parth' });
+    const newAdmin = await User.findOne({ email: adminEmail });
     if (!newAdmin) {
       await User.create({
         name: 'Rustik Admin',
-        email: 'rustik@parth',
-        password: 'parth@7874',
+        email: adminEmail,
+        password: adminPassword,
         role: 'admin',
         phone: '+918238537478',
         status: 'active'
       });
       console.log('🔑 Created new admin user: rustik@parth');
+    } else {
+      // Self-healing check: Verify if the existing admin's password matches adminPassword
+      const isMatch = await User.comparePassword(adminPassword, newAdmin.password);
+      if (!isMatch) {
+        console.log('🔄 Admin password mismatch detected in database. Updating password to correct value...');
+        if (global.isMockDB) {
+          const salt = await bcrypt.genSalt(10);
+          const hashedPassword = await bcrypt.hash(adminPassword, salt);
+          await User.findByIdAndUpdate(newAdmin._id, { password: hashedPassword });
+        } else {
+          // If mongoose, load document and save it to trigger pre-save hook
+          const mongooseUser = await UserMongoose.findById(newAdmin._id);
+          if (mongooseUser) {
+            mongooseUser.password = adminPassword;
+            await mongooseUser.save();
+          }
+        }
+        console.log('✅ Admin password updated/corrected successfully.');
+      }
     }
 
     const userCount = await User.countDocuments();

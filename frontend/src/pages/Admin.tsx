@@ -142,19 +142,20 @@ export const Admin = () => {
     }
   }, [isAdminRole, selectedHistoryDate]);
 
-  // Handle Admin Sign In
   const handleSubmitLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
 
-    if (!email || !password) {
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!normalizedEmail || !password) {
       setLoginError('Please enter both email and password.');
       return;
     }
 
     setLoginLoading(true);
     try {
-      const resData = await login(email, password);
+      const resData = await login(normalizedEmail, password);
       if (resData && resData.requireOTP) {
         setShowOtpView(true);
         setLoginError('');
