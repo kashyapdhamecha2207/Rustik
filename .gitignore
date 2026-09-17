@@ -26,3 +26,5 @@ dist/
 build/
 out/
 .system_generated/
+.DS_Store
+**/.DS_Store
